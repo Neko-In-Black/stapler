@@ -1,0 +1,38 @@
+{
+  "name": "neko.in.black/stapler",
+  "description": "Elegant and simple ORM-based file upload package for php.",
+  "keywords": [
+    "ORM",
+    "file",
+    "upload",
+    "S3",
+    "AWS",
+    "paperclip"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Travis Bennett",
+      "email": "tandrewbennett@hotmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=8.0",
+    "symfony/http-foundation": "6.2.x-dev",
+    "imagine/imagine": "1.x-dev",
+    "doctrine/inflector": "2.1.x-dev",
+    "symfony/mime": "6.2.x-dev"
+  },
+  "require-dev": {
+    "mockery/mockery": "^1.5",
+    "aws/aws-sdk-php": "^3.233",
+    "illuminate/database": "10.x-dev",
+    "illuminate/config": "10.x-dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "Neko\\Stapler\\": "src/"
+    }
+  },
+  "minimum-stability": "dev"
+}
