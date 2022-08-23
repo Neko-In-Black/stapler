@@ -19,7 +19,7 @@ interface Config
      * @param string $name
      * @param mixed  $value
      *
-     * @return mixed
+     * @return void
      */
     public function set($name, $value);
 }
