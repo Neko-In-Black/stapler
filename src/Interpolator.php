@@ -4,7 +4,7 @@ namespace Neko\Stapler;
 
 use Neko\Stapler\Interfaces\Interpolator as InterpolatorInterface;
 use Neko\Stapler\Interfaces\Attachment as AttachmentInterface;
-use Doctrine\Inflector\Inflector;
+use Doctrine\Inflector\InflectorFactory;
 
 class Interpolator implements InterpolatorInterface
 {
@@ -243,7 +243,9 @@ class Interpolator implements InterpolatorInterface
      */
     protected function attachment(AttachmentInterface $attachment, $styleName = '')
     {
-        return Inflector::pluralize($attachment->name);
+        $inflector = InflectorFactory::create()->build();
+
+        return $inflector->pluralize($attachment->name);
     }
 
     /**
