@@ -217,7 +217,7 @@ class Interpolator implements InterpolatorInterface
      * @param AttachmentInterface $attachment
      * @param string              $styleName
      *
-     * @return mixed
+     * @return string|void
      */
     protected function idPartition(AttachmentInterface $attachment, $styleName = '')
     {

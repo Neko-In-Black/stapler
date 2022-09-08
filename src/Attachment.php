@@ -94,6 +94,7 @@ class Attachment implements AttachmentInterface, JsonSerializable
      * - A Symfony uploaded file object.
      *
      * @param  mixed  $uploadedFile
+     * @throws \Neko\Stapler\Exceptions\FileException
      */
     public function setUploadedFile($uploadedFile)
     {
@@ -111,7 +112,7 @@ class Attachment implements AttachmentInterface, JsonSerializable
         $this->instanceWrite('file_name', $this->uploadedFile->getFilename());
         $this->instanceWrite('file_size', $this->uploadedFile->getSize());
         $this->instanceWrite('content_type', $this->uploadedFile->getMimeType());
-        $this->instanceWrite('updated_at', new DateTime);
+        $this->instanceWrite('updated_at', new DateTime());
         $this->queueAllForWrite();
     }
 
