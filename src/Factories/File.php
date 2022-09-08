@@ -82,7 +82,8 @@ class File
         }
 
         $meta = stream_get_meta_data($fp);
-        $extension = static::getMimeTypeManager()->getMimeTypes($meta['mediatype']);
+        $extensions = static::getMimeTypeManager()->getExtensions($meta['mediatype']);
+        $extension = $extensions[0] ?? 'png';
         $filePath = sys_get_temp_dir() . DIRECTORY_SEPARATOR . md5($meta['uri']) . '.' . $extension;
 
         file_put_contents($filePath, stream_get_contents($fp));
@@ -127,7 +128,7 @@ class File
         curl_close($ch);
 
         //TODO: try to recreate with this
-//        $request = Request::create($file);
+        //$request = Request::create($file);
 
         // Remove the query string and hash if they exist
         $file = preg_replace('/[&#\?].*/', '', $file);
