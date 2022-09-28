@@ -1,6 +1,6 @@
 {
   "name": "neko.in.black/stapler",
-  "description": "Elegant and simple ORM-based file upload package for php.",
+  "description": "Elegant and simple ORM-based file upload package for php. Developed by Travis Bennett. Updated by Andrew Black",
   "keywords": [
     "ORM",
     "file",
@@ -14,6 +14,10 @@
     {
       "name": "Travis Bennett",
       "email": "tandrewbennett@hotmail.com"
+    },
+    {
+      "name": "Andrew Black",
+      "email": "neko.in.black@gmail.com"
     }
   ],
   "require": {
