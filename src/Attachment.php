@@ -493,6 +493,7 @@ class Attachment implements AttachmentInterface, JsonSerializable
      *
      * @return array
      */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         $data = [];
