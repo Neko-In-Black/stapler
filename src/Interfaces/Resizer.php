@@ -19,7 +19,7 @@ interface Resizer
      * Resize an image using the computed settings.
      *
      * @param FileInterface $file
-     * @param Style         $style
+     * @param Style $style
      *
      * @return string
      */

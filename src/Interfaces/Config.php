@@ -17,7 +17,7 @@ interface Config
      * Set a configuration value.
      *
      * @param string $name
-     * @param mixed  $value
+     * @param mixed $value
      *
      * @return void
      */

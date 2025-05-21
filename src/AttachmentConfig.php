@@ -28,10 +28,10 @@ class AttachmentConfig
     /**
      * Constructor method.
      *
+     * @param string $name
+     * @param array $options
      * @throws Exceptions\InvalidAttachmentConfigurationException
      *
-     * @param string $name
-     * @param array  $options
      */
     public function __construct($name, array $options)
     {
@@ -48,7 +48,7 @@ class AttachmentConfig
      * Handle the dynamic setting of attachment options.
      *
      * @param string $name
-     * @param mixed  $value
+     * @param mixed $value
      */
     public function __set($name, $value)
     {
@@ -72,8 +72,6 @@ class AttachmentConfig
 
             return $this->options[$optionName];
         }
-
-        return;
     }
 
     /**

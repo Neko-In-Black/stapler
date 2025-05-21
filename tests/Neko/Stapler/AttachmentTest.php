@@ -2,9 +2,8 @@
 
 namespace Neko\Stapler;
 
-use PHPUnit_Framework_TestCase;
 use Mockery as m;
-
+use PHPUnit_Framework_TestCase;
 use Symfony\Component\HttpFoundation\File\UploadedFile as SymfonyUploadedFile;
 
 class AttachmentTest extends PHPUnit_Framework_TestCase
@@ -51,7 +50,7 @@ class AttachmentTest extends PHPUnit_Framework_TestCase
     public function it_should_be_able_to_return_an_attachment_url_for_a_style()
     {
         $attachment = $this->build_attachment();
-        $symfonyUploadedFile = new SymfonyUploadedFile(__DIR__.'/Fixtures/empty.gif', 'empty.gif', null, null, null, true);
+        $symfonyUploadedFile = new SymfonyUploadedFile(__DIR__ . '/Fixtures/empty.gif', 'empty.gif', null, null, null, true);
         $staplerUploadedFile = $attachment->setUploadedFile($symfonyUploadedFile);
 
         $url = $attachment->url('thumbnail');
@@ -68,7 +67,7 @@ class AttachmentTest extends PHPUnit_Framework_TestCase
     public function it_should_be_able_to_return_the_default_url_for_an_attachment_if_no_style_is_given()
     {
         $attachment = $this->build_attachment();
-        $symfonyUploadedFile = new SymfonyUploadedFile(__DIR__.'/Fixtures/empty.gif', 'empty.gif', null, null, null, true);
+        $symfonyUploadedFile = new SymfonyUploadedFile(__DIR__ . '/Fixtures/empty.gif', 'empty.gif', null, null, null, true);
         $staplerUploadedFile = $attachment->setUploadedFile($symfonyUploadedFile);
 
         $url = $attachment->url();
@@ -85,7 +84,7 @@ class AttachmentTest extends PHPUnit_Framework_TestCase
     public function it_should_be_able_to_return_an_attachment_path_for_a_style()
     {
         $attachment = $this->build_attachment();
-        $symfonyUploadedFile = new SymfonyUploadedFile(__DIR__.'/Fixtures/empty.gif', 'empty.gif', null, null, null, true);
+        $symfonyUploadedFile = new SymfonyUploadedFile(__DIR__ . '/Fixtures/empty.gif', 'empty.gif', null, null, null, true);
         $staplerUploadedFile = $attachment->setUploadedFile($symfonyUploadedFile);
 
         $path = $attachment->path('thumbnail');
@@ -102,7 +101,7 @@ class AttachmentTest extends PHPUnit_Framework_TestCase
     public function it_should_be_able_to_return_the_default_path_for_an_attachment_if_no_style_is_given($value = '')
     {
         $attachment = $this->build_attachment();
-        $symfonyUploadedFile = new SymfonyUploadedFile(__DIR__.'/Fixtures/empty.gif', 'empty.gif', null, null, null, true);
+        $symfonyUploadedFile = new SymfonyUploadedFile(__DIR__ . '/Fixtures/empty.gif', 'empty.gif', null, null, null, true);
         $staplerUploadedFile = $attachment->setUploadedFile($symfonyUploadedFile);
 
         $path = $attachment->path();
@@ -119,7 +118,7 @@ class AttachmentTest extends PHPUnit_Framework_TestCase
     public function it_should_be_able_to_return_the_content_type()
     {
         $attachment = $this->build_attachment();
-        $symfonyUploadedFile = new SymfonyUploadedFile(__DIR__.'/Fixtures/empty.gif', 'empty.gif', null, null, null, true);
+        $symfonyUploadedFile = new SymfonyUploadedFile(__DIR__ . '/Fixtures/empty.gif', 'empty.gif', null, null, null, true);
         $staplerUploadedFile = $attachment->setUploadedFile($symfonyUploadedFile);
 
         $contentType = $attachment->contentType();
@@ -136,7 +135,7 @@ class AttachmentTest extends PHPUnit_Framework_TestCase
     public function it_should_be_able_to_return_the_originaL_file_size()
     {
         $attachment = $this->build_attachment();
-        $symfonyUploadedFile = new SymfonyUploadedFile(__DIR__.'/Fixtures/empty.gif', 'empty.gif', null, null, null, true);
+        $symfonyUploadedFile = new SymfonyUploadedFile(__DIR__ . '/Fixtures/empty.gif', 'empty.gif', null, null, null, true);
         $staplerUploadedFile = $attachment->setUploadedFile($symfonyUploadedFile);
 
         $size = $attachment->size();
@@ -153,7 +152,7 @@ class AttachmentTest extends PHPUnit_Framework_TestCase
     public function it_should_be_able_to_return_the_original_file_name()
     {
         $attachment = $this->build_attachment();
-        $symfonyUploadedFile = new SymfonyUploadedFile(__DIR__.'/Fixtures/empty.gif', 'empty.gif', null, null, null, true);
+        $symfonyUploadedFile = new SymfonyUploadedFile(__DIR__ . '/Fixtures/empty.gif', 'empty.gif', null, null, null, true);
         $staplerUploadedFile = $attachment->setUploadedFile($symfonyUploadedFile);
 
         $filename = $attachment->originalFilename();
@@ -164,7 +163,7 @@ class AttachmentTest extends PHPUnit_Framework_TestCase
     /**
      * Build an attachment object.
      *
-     * @param  \Neko\Stapler\Interpolator
+     * @param \Neko\Stapler\Interpolator
      *
      * @return \Neko\Stapler\Attachment
      */

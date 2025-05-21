@@ -12,7 +12,7 @@ class Filesystem implements StorageInterface
     /**
      * Constructor method.
      *
-     * @param  Attachment  $attachedFile  The current attachedFile object being processed.
+     * @param Attachment $attachedFile The current attachedFile object being processed.
      */
     public function __construct(public Attachment $attachedFile)
     {
@@ -21,7 +21,7 @@ class Filesystem implements StorageInterface
     /**
      * Return the url for a file upload.
      *
-     * @param  string  $styleName
+     * @param string $styleName
      *
      * @return string
      */
@@ -33,7 +33,7 @@ class Filesystem implements StorageInterface
     /**
      * Return the path (on disk) of a file upload.
      *
-     * @param  string  $styleName
+     * @param string $styleName
      *
      * @return string
      */
@@ -45,7 +45,7 @@ class Filesystem implements StorageInterface
     /**
      * Remove an attached file.
      *
-     * @param  array  $filePaths
+     * @param array $filePaths
      */
     public function remove(array $filePaths)
     {
@@ -60,8 +60,8 @@ class Filesystem implements StorageInterface
      * The file can be an actual uploaded file object or the path to
      * a resized image file on disk.
      *
-     * @param  string  $file
-     * @param  string  $filePath
+     * @param string $file
+     * @param string $filePath
      * @throws \Neko\Stapler\Exceptions\FileException
      */
     public function move($file, $filePath)
@@ -74,14 +74,14 @@ class Filesystem implements StorageInterface
     /**
      * Determine if a style directory needs to be built and if so create it.
      *
-     * @param  string  $filePath
+     * @param string $filePath
      */
     protected function buildDirectory($filePath)
     {
         $directory = dirname($filePath);
 
-        if (!is_dir($directory)) {
-            mkdir($directory, 0777, true);
+        if (!is_dir($directory) && !mkdir($directory, 0777, true)) {
+            throw new \RuntimeException(sprintf('Directory "%s" was not created', $directory));
         }
     }
 
@@ -89,8 +89,8 @@ class Filesystem implements StorageInterface
      * Set the file permissions of a file upload
      * Does not ignore umask.
      *
-     * @param  string  $filePath
-     * @param  int  $overrideFilePermissions
+     * @param string $filePath
+     * @param int $overrideFilePermissions
      */
     protected function setPermissions($filePath, $overrideFilePermissions)
     {
@@ -104,8 +104,8 @@ class Filesystem implements StorageInterface
     /**
      * Attempt to move and uploaded file to it's intended location on disk.
      *
-     * @param  string  $file
-     * @param  string  $filePath
+     * @param string $file
+     * @param string $filePath
      *
      * @throws Exceptions\FileException
      */
@@ -123,8 +123,8 @@ class Filesystem implements StorageInterface
      *
      * @desc Recursively loops through each file in the directory and deletes it.
      *
-     * @param  string  $directory
-     * @param  bool  $deleteDirectory
+     * @param string $directory
+     * @param bool $deleteDirectory
      */
     protected function emptyDirectory($directory, $deleteDirectory = false)
     {
@@ -137,10 +137,10 @@ class Filesystem implements StorageInterface
                 continue;
             }
 
-            if (!is_dir($directory.'/'.$object)) {
-                unlink($directory.'/'.$object);
+            if (!is_dir($directory . '/' . $object)) {
+                unlink($directory . '/' . $object);
             } else {
-                $this->emptyDirectory($directory.'/'.$object, true);    // The object is a folder, recurse through it.
+                $this->emptyDirectory($directory . '/' . $object, true);    // The object is a folder, recurse through it.
             }
         }
 

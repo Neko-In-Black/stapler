@@ -45,7 +45,7 @@ class FileTest extends PHPUnit_Framework_TestCase
     public function it_should_be_able_to_build_a_stapler_uploaded_file_object_from_an_array()
     {
         $fileData = [
-            'tmp_name' => __DIR__.'/../Fixtures/empty.gif',
+            'tmp_name' => __DIR__ . '/../Fixtures/empty.gif',
             'name' => 'empty.gif',
             'type' => null,
             'size' => null,
@@ -83,13 +83,13 @@ class FileTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Neko\Stapler\Interfaces\File', $uploadedFile);
     }
 
-  /**
-   * Test that file created by file factory is not containing unnecessary quer string.
-   *
-   * @test
-   */
-  public function it_should_be_able_to_build_a_stapler_uploaded_file_object_without_following_querystring_in_basename()
-  {
+    /**
+     * Test that file created by file factory is not containing unnecessary quer string.
+     *
+     * @test
+     */
+    public function it_should_be_able_to_build_a_stapler_uploaded_file_object_without_following_querystring_in_basename()
+    {
         $url = 'https://graph.facebook.com/zuck/picture?type=large';
         $uploadedFile = File::create($url);
 
@@ -105,7 +105,7 @@ class FileTest extends PHPUnit_Framework_TestCase
         // To make sure that the exact image URL has query string
         $this->assertGreaterThanOrEqual(0, strpos($info, '?'));
         $this->assertFalse(strpos($uploadedFile->getFileName(), '?'));
-  }
+    }
 
     /**
      * Test that the file factory can create a Neko\Stapler\UploadedFile
@@ -115,7 +115,7 @@ class FileTest extends PHPUnit_Framework_TestCase
      */
     public function it_should_be_able_to_build_a_stapler_uploaded_file_object_from_a_string_file_path()
     {
-        $uploadedFile = File::create(__DIR__.'/../Fixtures/empty.gif');
+        $uploadedFile = File::create(__DIR__ . '/../Fixtures/empty.gif');
 
         $this->assertInstanceOf('Neko\Stapler\Interfaces\File', $uploadedFile);
     }
@@ -129,7 +129,7 @@ class FileTest extends PHPUnit_Framework_TestCase
      */
     protected function buildSymfonyUploadedFile($testing = true)
     {
-        $path = __DIR__.'/../Fixtures/empty.gif';
+        $path = __DIR__ . '/../Fixtures/empty.gif';
         $originalName = 'empty.gif';
 
         return new SymfonyUploadedFile($path, $originalName, null, null, null, $testing);

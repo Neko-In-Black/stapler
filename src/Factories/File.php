@@ -7,7 +7,6 @@ use Neko\Stapler\File\File as StaplerFile;
 use Neko\Stapler\File\UploadedFile as StaplerUploadedFile;
 use Neko\Stapler\Interfaces\Config as ConfigInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile as SymfonyUploadedFile;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mime\MimeTypes;
 
 class File
@@ -22,8 +21,8 @@ class File
     /**
      * Build a Neko\Stapler\UploadedFile object using various file input types.
      *
-     * @param  mixed  $file
-     * @param  bool  $testing
+     * @param mixed $file
+     * @param bool $testing
      *
      * @throws \Neko\Stapler\Exceptions\FileException
      */
@@ -52,7 +51,7 @@ class File
      * Compose a \Neko\Stapler\File\UploadedFile object from
      * a \Symfony\Component\HttpFoundation\File\UploadedFile object.
      *
-     * @param  \Symfony\Component\HttpFoundation\File\UploadedFile  $file
+     * @param \Symfony\Component\HttpFoundation\File\UploadedFile $file
      *
      * @return \Neko\Stapler\File\UploadedFile
      * @throws \Neko\Stapler\Exceptions\FileException
@@ -69,7 +68,7 @@ class File
      * Compose a \Neko\Stapler\File\UploadedFile object from a
      * data uri.
      *
-     * @param  string  $file
+     * @param string $file
      * @return \Neko\Stapler\File\File
      * @throws \Neko\Stapler\Exceptions\FileException
      */
@@ -96,8 +95,8 @@ class File
      * raw php $_FILES array date.  We assume here that the $_FILES array
      * has been formatted using the Stapler::arrangeFiles utility method.
      *
-     * @param  array  $file
-     * @param  bool  $testing
+     * @param array $file
+     * @param bool $testing
      *
      * @return \Neko\Stapler\File\UploadedFile
      * @throws \Neko\Stapler\Exceptions\FileException
@@ -136,7 +135,7 @@ class File
         // Get the original name of the file
         $pathinfo = pathinfo($file);
         $name = $pathinfo['basename'];
-        $extension = isset($pathinfo['extension']) ? '.'.$pathinfo['extension'] : '';
+        $extension = isset($pathinfo['extension']) ? '.' . $pathinfo['extension'] : '';
 
         // Create a temporary file with a unique name.
         $tempFile = tempnam(sys_get_temp_dir(), 'stapler-');
@@ -151,7 +150,7 @@ class File
             $mimeType = self::getMimeTypeManager()->guessMimeType($tempFile);
             $extensions = static::getMimeTypeManager()->getExtensions($mimeType);
             $extension = explode('', $extensions);
-            $filePath = $tempFile.'.'.$extension;
+            $filePath = $tempFile . '.' . $extension;
         }
 
         file_put_contents($filePath, $rawFile);

@@ -51,22 +51,23 @@ class Attachment implements AttachmentInterface, JsonSerializable
     /**
      * Constructor method.
      *
-     * @param  AttachmentConfig  $config  An instance of the configuration class.
-     * @param  InterpolatorInterface  $interpolator  An instance of the interpolator class for processing interpolations.
-     * @param  ResizerInterface  $resizer  An instance of the resizer library that's being used for image processing.
+     * @param AttachmentConfig $config An instance of the configuration class.
+     * @param InterpolatorInterface $interpolator An instance of the interpolator class for processing interpolations.
+     * @param ResizerInterface $resizer An instance of the resizer library that's being used for image processing.
      */
     public function __construct(
-        protected AttachmentConfig $config,
+        protected AttachmentConfig      $config,
         protected InterpolatorInterface $interpolator,
-        protected ResizerInterface $resizer
-    ) {
+        protected ResizerInterface      $resizer
+    )
+    {
     }
 
     /**
      * Handle the dynamic setting of attachment options.
      *
-     * @param  string  $name
-     * @param  mixed  $value
+     * @param string $name
+     * @param mixed $value
      */
     public function __set($name, $value)
     {
@@ -77,7 +78,7 @@ class Attachment implements AttachmentInterface, JsonSerializable
      * Handle the dynamic retrieval of attachment options.
      * Style options will be converted into a php stcClass.
      *
-     * @param  string  $optionName
+     * @param string $optionName
      *
      * @return mixed
      */
@@ -93,7 +94,7 @@ class Attachment implements AttachmentInterface, JsonSerializable
      * - An array (data parsed from the $_FILES array),
      * - A Symfony uploaded file object.
      *
-     * @param  mixed  $uploadedFile
+     * @param mixed $uploadedFile
      * @throws \Neko\Stapler\Exceptions\FileException
      */
     public function setUploadedFile($uploadedFile)
@@ -129,7 +130,7 @@ class Attachment implements AttachmentInterface, JsonSerializable
     /**
      * Mutator method for the interpolator property.
      *
-     * @param  InterpolatorInterface  $interpolator
+     * @param InterpolatorInterface $interpolator
      */
     public function setInterpolator(InterpolatorInterface $interpolator)
     {
@@ -149,7 +150,7 @@ class Attachment implements AttachmentInterface, JsonSerializable
     /**
      * Mutator method for the resizer property.
      *
-     * @param  ResizerInterface  $resizer
+     * @param ResizerInterface $resizer
      */
     public function setResizer(ResizerInterface $resizer)
     {
@@ -169,7 +170,7 @@ class Attachment implements AttachmentInterface, JsonSerializable
     /**
      * Mutator method for the storageDriver property.
      *
-     * @param  StorageInterface  $storageDriver
+     * @param StorageInterface $storageDriver
      */
     public function setStorageDriver(StorageInterface $storageDriver)
     {
@@ -191,7 +192,7 @@ class Attachment implements AttachmentInterface, JsonSerializable
      * This provides a mechanism for the attachment to access properties of the
      * corresponding model instance it's attached to.
      *
-     * @param  StaplerableInterface  $instance
+     * @param StaplerableInterface $instance
      */
     public function setInstance(StaplerableInterface $instance)
     {
@@ -213,7 +214,7 @@ class Attachment implements AttachmentInterface, JsonSerializable
     /**
      * Mutator method for the config property.
      *
-     * @param  AttachmentConfig  $config
+     * @param AttachmentConfig $config
      */
     public function setConfig(AttachmentConfig $config)
     {
@@ -243,7 +244,7 @@ class Attachment implements AttachmentInterface, JsonSerializable
     /**
      * Mutator method for the QueuedForDeletion property.
      *
-     * @param  array  $array
+     * @param array $array
      */
     public function setQueuedForDeletion($array)
     {
@@ -255,10 +256,10 @@ class Attachment implements AttachmentInterface, JsonSerializable
      * This allows us to call methods on the underlying
      * storage driver directly via the attachment.
      *
-     * @param  string  $method
-     * @param  array  $parameters
+     * @param string $method
+     * @param array $parameters
      *
-     * @return mixed
+     * @return mixed|void
      */
     public function __call($method, $parameters)
     {
@@ -272,7 +273,7 @@ class Attachment implements AttachmentInterface, JsonSerializable
     /**
      * Generates the url to an uploaded file (or a resized version of it).
      *
-     * @param  string  $styleName
+     * @param string $styleName
      *
      * @return string
      */
@@ -289,7 +290,7 @@ class Attachment implements AttachmentInterface, JsonSerializable
      * Generates the file system path to an uploaded file (or a resized version of it).
      * This is used for saving files, etc.
      *
-     * @param  string  $styleName
+     * @param string $styleName
      *
      * @return string
      */
@@ -380,7 +381,7 @@ class Attachment implements AttachmentInterface, JsonSerializable
 
         foreach ($this->styles as $style) {
             $fileLocation = $this->storage == 'filesystem' ? $this->path('original') : $this->url('original');
-            $file         = FileFactory::create($fileLocation);
+            $file = FileFactory::create($fileLocation);
 
             if ($style->dimensions && $file->isImage()) {
                 $file = $this->resizer->resize($file, $style);
@@ -396,7 +397,7 @@ class Attachment implements AttachmentInterface, JsonSerializable
     /**
      * Process the write queue.
      *
-     * @param  StaplerableInterface  $instance
+     * @param StaplerableInterface $instance
      */
     public function afterSave(StaplerableInterface $instance)
     {
@@ -407,7 +408,7 @@ class Attachment implements AttachmentInterface, JsonSerializable
     /**
      * Queue up this attachments files for deletion.
      *
-     * @param  StaplerableInterface  $instance
+     * @param StaplerableInterface $instance
      */
     public function beforeDelete(StaplerableInterface $instance)
     {
@@ -421,7 +422,7 @@ class Attachment implements AttachmentInterface, JsonSerializable
     /**
      * Process the delete queue.
      *
-     * @param  StaplerableInterface  $instance
+     * @param StaplerableInterface $instance
      */
     public function afterDelete(StaplerableInterface $instance)
     {
@@ -433,7 +434,7 @@ class Attachment implements AttachmentInterface, JsonSerializable
      * Removes all uploaded files (from storage) for this attachment.
      * This method does not clear out attachment attributes on the model instance.
      *
-     * @param  array  $stylesToClear
+     * @param array $stylesToClear
      */
     public function destroy(array $stylesToClear = [])
     {
@@ -444,7 +445,7 @@ class Attachment implements AttachmentInterface, JsonSerializable
     /**
      * Queues up all or some of this attachments uploaded files/images for deletion.
      *
-     * @param  array  $stylesToClear
+     * @param array $stylesToClear
      */
     public function clear(array $stylesToClear = [])
     {
@@ -467,8 +468,8 @@ class Attachment implements AttachmentInterface, JsonSerializable
     /**
      * Set an attachment attribute on the underlying model instance.
      *
-     * @param  string  $property
-     * @param  mixed  $value
+     * @param string $property
+     * @param mixed $value
      */
     public function instanceWrite($property, $value)
     {
@@ -501,7 +502,7 @@ class Attachment implements AttachmentInterface, JsonSerializable
         foreach ($this->styles as $style) {
             $data[$style->name] = [
                 'path' => $this->path($style->name),
-                'url'  => $this->url($style->name)
+                'url' => $this->url($style->name)
             ];
         }
 
@@ -548,7 +549,7 @@ class Attachment implements AttachmentInterface, JsonSerializable
      * Add a subset (filtered via style) of the uploaded files for this attachment
      * to the queuedForDeletion queue.
      *
-     * @param  array  $stylesToClear
+     * @param array $stylesToClear
      */
     protected function queueSomeForDeletion(array $stylesToClear)
     {
@@ -578,7 +579,7 @@ class Attachment implements AttachmentInterface, JsonSerializable
     /**
      * Generates the default url if no file attachment is present.
      *
-     * @param  string  $styleName
+     * @param string $styleName
      *
      * @return string
      */
@@ -594,12 +595,12 @@ class Attachment implements AttachmentInterface, JsonSerializable
     /**
      * Generates the default path if no file attachment is present.
      *
-     * @param  string  $styleName
+     * @param string $styleName
      *
      * @return string
      */
     protected function defaultPath($styleName = '')
     {
-        return $this->public_path.$this->defaultUrl($styleName);
+        return $this->public_path . $this->defaultUrl($styleName);
     }
 }

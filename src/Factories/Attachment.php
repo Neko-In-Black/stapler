@@ -2,9 +2,9 @@
 
 namespace Neko\Stapler\Factories;
 
-use Neko\Stapler\Stapler;
 use Neko\Stapler\AttachmentConfig;
 use Neko\Stapler\Factories\Storage as StorageFactory;
+use Neko\Stapler\Stapler;
 
 class Attachment
 {
@@ -12,7 +12,7 @@ class Attachment
      * Create a new attachment object.
      *
      * @param string $name
-     * @param array  $options
+     * @param array $options
      *
      * @return \Neko\Stapler\Attachment
      */
@@ -35,8 +35,8 @@ class Attachment
      * Build out the dependencies required to create
      * a new attachment object.
      *
-     * @param  string  $name
-     * @param  array  $options
+     * @param string $name
+     * @param array $options
      *
      * @return array
      * @throws \Neko\Stapler\Exceptions\InvalidAttachmentConfigurationException
@@ -67,7 +67,7 @@ class Attachment
         $options = array_merge($defaultOptions, $options);
         $storage = $options['storage'];
         $options = array_replace_recursive($config->get($storage), $options);
-        $options['styles'] = array_merge((array) $options['styles'], ['original' => '']);
+        $options['styles'] = array_merge((array)$options['styles'], ['original' => '']);
 
         return $options;
     }

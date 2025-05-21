@@ -2,9 +2,9 @@
 
 namespace Neko\Stapler\Storage;
 
-use Neko\Stapler\Interfaces\Storage as StorageInterface;
 use Aws\S3\S3Client;
 use Neko\Stapler\Attachment;
+use Neko\Stapler\Interfaces\Storage as StorageInterface;
 
 class S3 implements StorageInterface
 {
@@ -20,7 +20,7 @@ class S3 implements StorageInterface
      * Constructor method.
      *
      * @param Attachment $attachedFile The current attachedFile object being processed.
-     * @param S3Client   $s3Client The AWS S3Client instance.
+     * @param S3Client $s3Client The AWS S3Client instance.
      */
     public function __construct(public Attachment $attachedFile, protected S3Client $s3Client)
     {

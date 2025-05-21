@@ -9,9 +9,9 @@ interface Interpolator
     /**
      * Interpolate a string.
      *
-     * @param string              $string
+     * @param string $string
      * @param AttachmentInterface $attachment
-     * @param string              $styleName
+     * @param string $styleName
      *
      * @return string
      */

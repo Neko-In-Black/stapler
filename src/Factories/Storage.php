@@ -3,16 +3,16 @@
 namespace Neko\Stapler\Factories;
 
 use Neko\Stapler\Attachment as AttachedFile;
+use Neko\Stapler\Stapler;
 use Neko\Stapler\Storage\Filesystem;
 use Neko\Stapler\Storage\S3;
-use Neko\Stapler\Stapler;
 
 class Storage
 {
     /**
      * Build a storage instance.
      *
-     * @param  AttachedFile  $attachment
+     * @param AttachedFile $attachment
      * @return \Neko\Stapler\Storage\Filesystem|\Neko\Stapler\Storage\S3
      */
     public static function create(AttachedFile $attachment)

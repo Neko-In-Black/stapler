@@ -1,14 +1,17 @@
 ## Examples
+
 * [Eloquent](#eloquent)
-  * [Defining Attachments](#defining-attachments)
-  * [Saving Files](#saving-files)
-  * [Retreiving Uploads](#retreiving-uploads)
-  * [Deleting uploads](#deleting-uploads)
+    * [Defining Attachments](#defining-attachments)
+    * [Saving Files](#saving-files)
+    * [Retreiving Uploads](#retreiving-uploads)
+    * [Deleting uploads](#deleting-uploads)
 
 *These examples assume you have already booted Stapler (see [setup](setup.md) for more info on this).*
 
 ### Eloquent
+
 #### Definining-Attachments
+
 ```php
 use Neko\Stapler\ORM\StaplerableInterface;
 use Neko\Stapler\ORM\EloquentTrait;
@@ -119,7 +122,12 @@ Class Photo extends Eloquent implements StaplerableInterface
 ```
 
 #### Saving-Files
-Once an attachment is defined on a model, we can then assign values to it (as a property on the model) in order to save it as a file upload.  Assuming we had an instance of our Photo model from above, we can assign a value to any of our defined attachments before saving the model.  Upon a successful save of the record, Stapler will go in and handle all of the file uploading, image processing, etc for us.  In a controller somewhere, let's assume that we've fetched (or created) a photo model instance and we want to assign some file values to it (from a previously submitted form):
+
+Once an attachment is defined on a model, we can then assign values to it (as a property on the model) in order to save
+it as a file upload. Assuming we had an instance of our Photo model from above, we can assign a value to any of our
+defined attachments before saving the model. Upon a successful save of the record, Stapler will go in and handle all of
+the file uploading, image processing, etc for us. In a controller somewhere, let's assume that we've fetched (or
+created) a photo model instance and we want to assign some file values to it (from a previously submitted form):
 
 ```php
 // If we're using Laravel, we can assign the Symfony uploaded file object directly on the modeal:
@@ -146,7 +154,15 @@ $photo->save();
 ```
 
 #### Retreiving-Uploads
-After we define an attachment on a model, we can access the attachment as a property on the model (regardless of whether or not an image has been uploaded or not).  When attempting to display images, the default image url will be displayed until an image is uploaded.  The attachment itself is an instance of Neko\Stapler\Attachment (see [attachments](attachments.md) for more info on attachments).  An attachment is really just a value object; it provides methods for seamlessly accessing the properties, paths, and urls of the underlying uploaded file.  Continuing our example from above, lets assume we wanted to display the various styles of our previously defined foo attachment in an image tag.  Assuming we had an instance of the Photo model, we could do the following:
+
+After we define an attachment on a model, we can access the attachment as a property on the model (regardless of whether
+or not an image has been uploaded or not). When attempting to display images, the default image url will be displayed
+until an image is uploaded. The attachment itself is an instance of Neko\Stapler\Attachment (
+see [attachments](attachments.md) for more info on attachments). An attachment is really just a value object; it
+provides methods for seamlessly accessing the properties, paths, and urls of the underlying uploaded file. Continuing
+our example from above, lets assume we wanted to display the various styles of our previously defined foo attachment in
+an image tag. Assuming we had an instance of the Photo model, we could do the following:
+
 ```html
 Display a resized thumbnail style image belonging to a user record
 <img src="<?= $photo->foo->url('thumbnail') ?>">
@@ -158,12 +174,16 @@ This also displays the unmodified original image (unless the :default_style inte
 <img src="<?= $photo->foo->url() ?>">
 ```
 
-As you can see, we can display any of the defined styles for a given attachment. We can also retrieve the full file path (on disk) of a given style (this is very useful when providing file download functionality):
+As you can see, we can display any of the defined styles for a given attachment. We can also retrieve the full file
+path (on disk) of a given style (this is very useful when providing file download functionality):
+
 ```php
 $photo->foo->path('thumbnail');
 ```
 
-We can also grab the size, original filename, laste updated timestamp, and content type of the original (unaltered) uploaded file (**NOTE**: *stapler will always store an unaltered version of the original file*):
+We can also grab the size, original filename, laste updated timestamp, and content type of the original (unaltered)
+uploaded file (**NOTE**: *stapler will always store an unaltered version of the original file*):
+
 ```php
 $photo->foo->size();
 $photo->foo->originalFilename();
@@ -172,19 +192,28 @@ $photo->foo->contentType();
 ```
 
 #### Deleting-Uploads
-Unless you've set the 'keep_old_files' flag on the attachment to true, deleting a record will automatically remove all uploaded files, across all attachments, across all styles, for the a given model/record:
+
+Unless you've set the 'keep_old_files' flag on the attachment to true, deleting a record will automatically remove all
+uploaded files, across all attachments, across all styles, for the a given model/record:
+
 ```php
 $photo->delete();
 ```
 
-If we need to remove the uploaded files only (the photo record itself will remain intact), we can assign the attachment a value of STAPLER_NULL and then save the record. This will remove all of the attachment's uploaded files from storage and clear out the attachment related file attributes on the model:
+If we need to remove the uploaded files only (the photo record itself will remain intact), we can assign the attachment
+a value of STAPLER_NULL and then save the record. This will remove all of the attachment's uploaded files from storage
+and clear out the attachment related file attributes on the model:
+
 ```php
 // Remove all of the attachment's uploaded files and empty the attacment attributes on the model (does not save the record though).
 $photo->foo = STAPLER_NULL;
 $photo->save();
 ```
 
-The destroy method is similar, however it doesn't clear out the attachment attributes on the model and doesn't require us to save the record in order to remove uploaded files.  It's also filterable; we can pass in array of the syles we want to clear:
+The destroy method is similar, however it doesn't clear out the attachment attributes on the model and doesn't require
+us to save the record in order to remove uploaded files. It's also filterable; we can pass in array of the syles we want
+to clear:
+
 ```php
 // Remove all of the attachments's uploaded files (across all styles) from storage.
 $photo->foo->destroy();
@@ -193,7 +222,8 @@ $photo->foo->destroy();
 $photo->foo->destroy(['thumbnail']);
 ```
 
-You may also reprocess uploaded images on an attachment by calling the reprocess() command (this is very useful for adding new styles to an existing attachment type where records have already been uploaded).
+You may also reprocess uploaded images on an attachment by calling the reprocess() command (this is very useful for
+adding new styles to an existing attachment type where records have already been uploaded).
 
 ```php
 // Programmatically reprocess an attachment's uploaded images:

@@ -13,9 +13,9 @@ interface Attachment
     /**
      * Constructor method.
      *
-     * @param AttachmentConfig          $config
-     * @param InterpolatorInterface     $interpolator
-     * @param ResizerInterface          $resizer
+     * @param AttachmentConfig $config
+     * @param InterpolatorInterface $interpolator
+     * @param ResizerInterface $resizer
      */
     public function __construct(AttachmentConfig $config, InterpolatorInterface $interpolator, ResizerInterface $resizer);
 
@@ -243,7 +243,7 @@ interface Attachment
      * Set an attachment attribute on the underlying model instance.
      *
      * @param string $property
-     * @param mixed  $value
+     * @param mixed $value
      */
     public function instanceWrite($property, $value);
 

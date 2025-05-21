@@ -22,7 +22,7 @@ class Style implements StyleInterface
     public $dimensions;
 
     /**
-     * Whether or not the image should be auto-oriented
+     * Whether the image should be auto-oriented
      * using embedded EXIF data.
      *
      * @var bool
@@ -40,10 +40,10 @@ class Style implements StyleInterface
     /**
      * Constructor method.
      *
+     * @param string $name
+     * @param mixed $value
      * @throws Exceptions\InvalidStyleConfigurationException
      *
-     * @param string $name
-     * @param mixed  $value
      */
     public function __construct($name, $value)
     {

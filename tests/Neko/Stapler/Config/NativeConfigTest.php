@@ -2,8 +2,8 @@
 
 namespace Neko\Stapler\Config;
 
-use PHPUnit_Framework_TestCase;
 use Mockery as m;
+use PHPUnit_Framework_TestCase;
 
 class NativeConfigTest extends PHPUnit_Framework_TestCase
 {

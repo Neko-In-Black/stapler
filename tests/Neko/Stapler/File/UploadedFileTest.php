@@ -2,10 +2,10 @@
 
 namespace Neko\Stapler\Tests\File;
 
-use PHPUnit_Framework_TestCase;
-use Neko\Stapler\File\UploadedFile;
-use Symfony\Component\HttpFoundation\File\UploadedFile as SymfonyUploadedFile;
 use Mockery as m;
+use Neko\Stapler\File\UploadedFile;
+use PHPUnit_Framework_TestCase;
+use Symfony\Component\HttpFoundation\File\UploadedFile as SymfonyUploadedFile;
 
 class UploadedFileTest extends PHPUnit_Framework_TestCase
 {
@@ -54,7 +54,7 @@ class UploadedFileTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * An uploaded file object should be able to return the 
+     * An uploaded file object should be able to return the
      * name of the underlying uploaded file.
      *
      * @test
@@ -84,7 +84,7 @@ class UploadedFileTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * An uploaded file object should be able to return the mime type 
+     * An uploaded file object should be able to return the mime type
      * of the underlyjng uploaded file.
      *
      * @test
@@ -131,7 +131,7 @@ class UploadedFileTest extends PHPUnit_Framework_TestCase
      */
     protected function buildSymfonyUploadedFile($testing = true)
     {
-        $path = __DIR__.'/../Fixtures/empty.gif';
+        $path = __DIR__ . '/../Fixtures/empty.gif';
         $originalName = 'empty.gif';
 
         return new SymfonyUploadedFile($path, $originalName, null, null, null, $testing);

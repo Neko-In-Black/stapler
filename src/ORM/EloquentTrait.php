@@ -7,7 +7,7 @@ use Neko\Stapler\Factories\Attachment as AttachmentFactory;
 trait EloquentTrait
 {
     /**
-     * All of the model's current file attachments.
+     * All the model's current file attachments.
      *
      * @var array
      */
@@ -28,7 +28,7 @@ trait EloquentTrait
      * This function acts as a quasi constructor for this trait.
      *
      * @param string $name
-     * @param array  $options
+     * @param array $options
      */
     public function hasAttachedFile($name, array $options = [])
     {
@@ -94,7 +94,7 @@ trait EloquentTrait
      * Handle the dynamic setting of attachment objects.
      *
      * @param string $key
-     * @param mixed  $value
+     * @param mixed $value
      */
     public function setAttribute($key, $value)
     {
@@ -111,7 +111,7 @@ trait EloquentTrait
     }
 
     /**
-     * Get all of the current attributes and attachment objects on the model.
+     * Get all the current attributes and attachment objects on the model.
      *
      * @return mixed
      */
@@ -123,7 +123,7 @@ trait EloquentTrait
     /**
      * Return the image paths (across all styles) for a given attachment.
      *
-     * @param  string $attachmentName
+     * @param string $attachmentName
      * @return array
      */
     public function pathsForAttachment($attachmentName)
@@ -144,7 +144,7 @@ trait EloquentTrait
     /**
      * Return the image urls (across all styles) for a given attachment.
      *
-     * @param  string $attachmentName
+     * @param string $attachmentName
      * @return array
      */
     public function urlsForAttachment($attachmentName)

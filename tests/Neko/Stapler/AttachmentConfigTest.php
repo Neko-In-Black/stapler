@@ -2,8 +2,8 @@
 
 namespace Neko\Stapler;
 
-use PHPUnit_Framework_TestCase;
 use Mockery as m;
+use PHPUnit_Framework_TestCase;
 
 class AttachmentConfigTest extends PHPUnit_Framework_TestCase
 {

@@ -2,13 +2,13 @@
 
 namespace Neko\Stapler\File\Image;
 
-use Neko\Stapler\Interfaces\Resizer as ResizerInterface;
-use Neko\Stapler\Interfaces\File as FileInterface;
-use Neko\Stapler\Interfaces\Style as StyleInterface;
-use Imagine\Image\ImagineInterface;
-use Imagine\Image\ImageInterface;
 use Imagine\Image\Box;
+use Imagine\Image\ImageInterface;
+use Imagine\Image\ImagineInterface;
 use Imagine\Image\Point;
+use Neko\Stapler\Interfaces\File as FileInterface;
+use Neko\Stapler\Interfaces\Resizer as ResizerInterface;
+use Neko\Stapler\Interfaces\Style as StyleInterface;
 
 class Resizer implements ResizerInterface
 {
@@ -25,7 +25,7 @@ class Resizer implements ResizerInterface
     /**
      * Resize an image using the computed settings.
      *
-     * @param FileInterface  $file
+     * @param FileInterface $file
      * @param StyleInterface $style
      *
      * @return string
@@ -34,7 +34,7 @@ class Resizer implements ResizerInterface
     {
         $filePath = $this->randomFilePath($file->getFilename());
         list($width, $height, $option) = $this->parseStyleDimensions($style);
-        $method = 'resize'.ucfirst($option);
+        $method = 'resize' . ucfirst($option);
 
         if ($method == 'resizeCustom') {
             $this->resizeCustom($file, $style->dimensions)
@@ -50,7 +50,7 @@ class Resizer implements ResizerInterface
         }
 
         $this->$method($image, $width, $height)
-           ->save($filePath, $style->convertOptions);
+            ->save($filePath, $style->convertOptions);
 
         return $filePath;
     }
@@ -130,8 +130,8 @@ class Resizer implements ResizerInterface
      * image being resized to a square).
      *
      * @param ImageInterface $image
-     * @param string         $width  - The image's new width.
-     * @param string         $height - The image's new height.
+     * @param string $width - The image's new width.
+     * @param string $height - The image's new height.
      *
      * @return ImageInterface
      */
@@ -164,8 +164,8 @@ class Resizer implements ResizerInterface
      * Resize an image as a landscape (width fixed).
      *
      * @param ImageInterface $image
-     * @param string         $width  - The image's new width.
-     * @param string         $height - The image's new height.
+     * @param string $width - The image's new width.
+     * @param string $height - The image's new height.
      *
      * @return ImageInterface
      */
@@ -183,8 +183,8 @@ class Resizer implements ResizerInterface
      * Resize an image as a portrait (height fixed).
      *
      * @param ImageInterface $image
-     * @param string         $width  - The image's new width.
-     * @param string         $height - The image's new height.
+     * @param string $width - The image's new width.
+     * @param string $height - The image's new height.
      *
      * @return ImageInterface
      */
@@ -202,8 +202,8 @@ class Resizer implements ResizerInterface
      * Resize an image and then center crop it.
      *
      * @param ImageInterface $image
-     * @param string         $width  - The image's new width.
-     * @param string         $height - The image's new height.
+     * @param string $width - The image's new width.
+     * @param string $height - The image's new height.
      *
      * @return ImageInterface
      */
@@ -223,8 +223,8 @@ class Resizer implements ResizerInterface
      * Resize an image to an exact width and height.
      *
      * @param ImageInterface $image
-     * @param string         $width  - The image's new width.
-     * @param string         $height - The image's new height.
+     * @param string $width - The image's new width.
+     * @param string $height - The image's new height.
      *
      * @return ImageInterface
      */
@@ -236,8 +236,8 @@ class Resizer implements ResizerInterface
     /**
      * Resize an image using a user defined callback.
      *
-     * @param  FileInterface  $file
-     * @param  callable  $callable
+     * @param FileInterface $file
+     * @param callable $callable
      *
      * @return ImageInterface
      */
@@ -250,7 +250,7 @@ class Resizer implements ResizerInterface
      * Returns the width based on the new image height.
      *
      * @param ImageInterface $image
-     * @param int            $newHeight - The image's new height.
+     * @param int $newHeight - The image's new height.
      *
      * @return int
      */
@@ -265,7 +265,7 @@ class Resizer implements ResizerInterface
      * Returns the height based on the new image width.
      *
      * @param ImageInterface $image
-     * @param int            $newWidth - The image's new width.
+     * @param int $newWidth - The image's new width.
      *
      * @return int
      */
@@ -280,8 +280,8 @@ class Resizer implements ResizerInterface
      * Attempts to find the best way to crop.
      * Takes into account the image being a portrait or landscape.
      *
-     * @param Box    $size   - The image's current size.
-     * @param string $width  - The image's new width.
+     * @param Box $size - The image's current size.
+     * @param string $width - The image's new width.
      * @param string $height - The image's new height.
      *
      * @return array
@@ -311,7 +311,7 @@ class Resizer implements ResizerInterface
      * 2. If there is exif data, we'll rotate and flip the image accordingly to re-orient it.
      * 3. Finally, we'll strip the exif data from the image so that there can be no attempt to 'correct' it again.
      *
-     * @param string         $path
+     * @param string $path
      * @param ImageInterface $image
      *
      * @return ImageInterface $image
@@ -363,7 +363,7 @@ class Resizer implements ResizerInterface
      * Given the name of a file, generate temp a path
      * with a radomized filename.
      *
-     * @param  string $filename
+     * @param string $filename
      * @return string
      */
     protected function randomFilePath($filename)

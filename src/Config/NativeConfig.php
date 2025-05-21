@@ -54,7 +54,7 @@ class NativeConfig implements ConfigInterface
     /**
      * Constructor method.
      *
-     * @param  array|null  $items
+     * @param array|null $items
      */
     public function __construct(array $items = null)
     {

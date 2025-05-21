@@ -7,10 +7,10 @@ interface Style
     /**
      * Constructor method.
      *
+     * @param string $name
+     * @param mixed $value
      * @throws Neko\Stapler\Exceptions\InvalidStyleConfigurationException
      *
-     * @param string $name
-     * @param mixed  $value
      */
     public function __construct($name, $value);
 }

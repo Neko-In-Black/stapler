@@ -2,8 +2,8 @@
 
 namespace Neko\Stapler;
 
-use PHPUnit_Framework_TestCase;
 use Mockery as m;
+use PHPUnit_Framework_TestCase;
 
 class StyleTest extends PHPUnit_Framework_TestCase
 {
@@ -48,7 +48,7 @@ class StyleTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test that the style class can accept an array of values to 
+     * Test that the style class can accept an array of values to
      * parse.
      *
      * @test

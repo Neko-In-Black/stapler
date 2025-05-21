@@ -2,8 +2,8 @@
 
 namespace Neko\Stapler\Factories;
 
-use PHPUnit_Framework_TestCase;
 use Mockery as m;
+use PHPUnit_Framework_TestCase;
 
 class StorageTest extends PHPUnit_Framework_TestCase
 {

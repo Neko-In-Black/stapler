@@ -3,8 +3,8 @@
 namespace Neko\Stapler\Fixtures\Models;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
-use Neko\Stapler\ORM\StaplerableInterface;
 use Neko\Stapler\ORM\EloquentTrait;
+use Neko\Stapler\ORM\StaplerableInterface;
 
 class Photo extends Eloquent implements StaplerableInterface
 {
@@ -14,7 +14,7 @@ class Photo extends Eloquent implements StaplerableInterface
 
     /**
      * Constructor method.
-     * 
+     *
      * @param array $attributes
      */
     public function __construct($attributes = ['id' => 1])

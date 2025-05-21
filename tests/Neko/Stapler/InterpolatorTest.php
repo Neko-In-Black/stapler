@@ -2,21 +2,21 @@
 
 namespace Neko\Stapler;
 
-use PHPUnit_Framework_TestCase;
 use Mockery as m;
+use PHPUnit_Framework_TestCase;
 
 class InterpolatorTest extends PHPUnit_Framework_TestCase
 {
     /**
      * An attachment instance.
-     * 
+     *
      * @var \Neko\Stapler\Attachment
      */
     protected $attachment;
 
     /**
      * An interpolator instance.
-     * 
+     *
      * @var \Neko\Stapler\Interpolator
      */
     protected $interpolator;
@@ -39,7 +39,7 @@ class InterpolatorTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test that when no style is passed in, the interpolator 
+     * Test that when no style is passed in, the interpolator
      * will correctly interpolate a string using the default style.
      *
      * @test
@@ -131,7 +131,7 @@ class InterpolatorTest extends PHPUnit_Framework_TestCase
     /**
      * Build a mock attachment object.
      *
-     * @param  \Neko\Stapler\Interpolator
+     * @param \Neko\Stapler\Interpolator
      *
      * @return \Neko\Stapler\Attachment
      */
@@ -151,7 +151,7 @@ class InterpolatorTest extends PHPUnit_Framework_TestCase
 
     /**
      * Build a mock model instance.
-     * 
+     *
      * @return mixed
      */
     protected function build_mock_instance()

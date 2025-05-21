@@ -10,7 +10,7 @@ class Validator implements ValidatorInterface
      * Validate the attachment options for an attachment type.
      * A url is required to have either an :id or an :id_partition interpolation.
      *
-     * @param  array  $options
+     * @param array $options
      * @throws \Neko\Stapler\Exceptions\InvalidUrlOptionException
      */
     public function validateOptions(array $options)
@@ -22,7 +22,7 @@ class Validator implements ValidatorInterface
      * Validate the attachment options for an attachment type when the storage
      * driver is set to 'filesystem'.
      *
-     * @param  array  $options
+     * @param array $options
      * @throws Exceptions\InvalidUrlOptionException
      *
      */
@@ -41,7 +41,7 @@ class Validator implements ValidatorInterface
      * Validate the attachment options for an attachment type when the storage
      * driver is set to 's3'.
      *
-     * @param  array  $options
+     * @param array $options
      * @throws Exceptions\InvalidUrlOptionException
      *
      */

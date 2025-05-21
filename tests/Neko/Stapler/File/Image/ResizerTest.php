@@ -2,13 +2,13 @@
 
 namespace Neko\Stapler\File\Image;
 
-use PHPUnit_Framework_TestCase;
-use Neko\Stapler\File\UploadedFile;
-use Neko\Stapler\Style;
-use Symfony\Component\HttpFoundation\File\UploadedFile as SymfonyUploadedFile;
 use Imagine\Image\Box;
 use Imagine\Image\Point;
 use Mockery as m;
+use Neko\Stapler\File\UploadedFile;
+use Neko\Stapler\Style;
+use PHPUnit_Framework_TestCase;
+use Symfony\Component\HttpFoundation\File\UploadedFile as SymfonyUploadedFile;
 
 class ResizerTest extends PHPUnit_Framework_TestCase
 {
@@ -76,7 +76,7 @@ class ResizerTest extends PHPUnit_Framework_TestCase
      */
     protected function buildUploadedFile()
     {
-        $path = realpath(__DIR__.'/../../Fixtures/empty.gif');
+        $path = realpath(__DIR__ . '/../../Fixtures/empty.gif');
         $originalName = 'Test.gif';
         $symfonyUploadedFile = new SymfonyUploadedFile($path, $originalName, null, null, null, true);
 
@@ -124,7 +124,7 @@ class ResizerTest extends PHPUnit_Framework_TestCase
      *
      * @param string $name
      * @param string $value
-     * @param array  $convertOptions
+     * @param array $convertOptions
      *
      * @return Object
      */

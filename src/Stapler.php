@@ -2,13 +2,12 @@
 
 namespace Neko\Stapler;
 
+use Aws\S3\S3Client;
 use Neko\Stapler\Interfaces\Attachment as AttachmentInterface;
 use Neko\Stapler\Interfaces\Config as ConfigInterface;
-use Neko\Stapler\File\Image\Resizer;
-use Aws\S3\S3Client;
 
 /**
- * Easy file attachment management for Eloquent (Laravel 4).
+ * Easy file attachment management for Eloquent (Laravel 10).
  *
  * Credits to the guys at thoughtbot for creating the
  * paperclip plugin (rails) from which this package is inspired.
@@ -17,6 +16,7 @@ use Aws\S3\S3Client;
  * @version v1.1.1
  *
  * @author Travis Bennett <tandrewbennett@hotmail.com>
+ * @modified Andrew Black <neko.in.black@gmail.com>
  *
  * @link
  */
@@ -217,7 +217,7 @@ class Stapler
      * Build an S3Client instance using the information defined in
      * this class's attachedFile object.
      *
-     * @param $attachedFile
+     * @param AttachmentInterface $attachedFile
      *
      * @return S3Client
      */
